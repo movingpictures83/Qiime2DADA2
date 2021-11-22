@@ -1,0 +1,2 @@
+Prefix plugins/Qiime2DADA2/example
+Plugin Qiime2DADA2 inputfile parameters.qiime2.dada2.txt outputfile sequences

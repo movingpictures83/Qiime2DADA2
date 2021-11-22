@@ -1,0 +1,11 @@
+inputfile       sequences-paired-end-demux.qza
+threads	1
+forwardtruncate	240
+reversetruncate	210
+forwardtrim	19
+reversetrim	20
+q	2
+chimeramethod	consensus
+forwardmaxee	2
+reversemaxee	2
+minoverlap	30
