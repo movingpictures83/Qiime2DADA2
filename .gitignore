@@ -1,2 +1,15 @@
 Miniconda3-latest-Linux-x86_64.sh
 qiime2-2021.11-py38-linux-conda.yml
+
+# Created by https://www.toptal.com/developers/gitignore/api/scons
+# Edit at https://www.toptal.com/developers/gitignore?templates=scons
+
+### SCons ###
+# for projects that use SCons for building: http://http://www.scons.org/
+.sconsign.dblite
+
+# When configure fails, SCons outputs these
+config.log
+.sconf_temp
+
+# End of https://www.toptal.com/developers/gitignore/api/scons
