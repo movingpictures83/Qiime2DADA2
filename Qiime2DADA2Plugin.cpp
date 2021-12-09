@@ -15,14 +15,14 @@ void Qiime2DADA2Plugin::input(std::string file) {
 }
 
 void Qiime2DADA2Plugin::run() {
-   
+
 }
 
 void Qiime2DADA2Plugin::output(std::string file) {
-   std::string command = "export OLDPATH=${PATH}; ";	
-   command += "export PATH=${CONDA_HOME}/bin/:${PATH}; ";	
+   std::string command = "export OLDPATH=${PATH}; ";
+   command += "export PATH=${CONDA_HOME}/bin/:${PATH}; ";
    command += "eval \"$(conda shell.bash hook)\"; ";
-   command += "conda activate qiime2-2021.4; ";
+   command += "conda activate qiime2-2021.11; ";
    command += "qiime dada2 denoise-paired --i-demultiplexed-seqs "+std::string(PluginManager::prefix())+"/"+parameters["inputfile"];
    if (parameters.count("threads") != 0)
 	   command += " --p-n-threads "+parameters["threads"];
@@ -44,7 +44,7 @@ void Qiime2DADA2Plugin::output(std::string file) {
 	   command += " --p-max-ee-r "+parameters["reversemaxee"];
    if (parameters.count("minoverlap") != 0)
 	   command += " --p-min-overlap "+parameters["minoverlap"];
-   
+
    command += " --o-representative-sequences "+file+"-rep-seqs.qza --o-table "+file+"-table.qza --o-denoising-stats "+file+"-denoising-stats-dada.qza; ";
    command += "conda deactivate; ";
    command += "conda deactivate; ";
