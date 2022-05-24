@@ -22,7 +22,7 @@ void Qiime2DADA2Plugin::output(std::string file) {
    std::string command = "export OLDPATH=${PATH}; ";
    command += "export PATH=${CONDA_HOME}/bin/:${PATH}; ";
    command += "eval \"$(conda shell.bash hook)\"; ";
-   command += "conda activate qiime2-2021.11; ";
+   command += "conda activate qiime2-2021.4; ";
    command += "qiime dada2 denoise-paired --i-demultiplexed-seqs "+std::string(PluginManager::prefix())+"/"+parameters["inputfile"];
    if (parameters.count("threads") != 0)
 	   command += " --p-n-threads "+parameters["threads"];
