@@ -23,27 +23,19 @@ void Qiime2DADA2Plugin::output(std::string file) {
    command += "export PATH=${CONDA_HOME}/bin/:${PATH}; ";
    command += "eval \"$(conda shell.bash hook)\"; ";
    command += "conda activate qiime2-2021.4; ";
-   command += "qiime dada2 denoise-paired --i-demultiplexed-seqs "+std::string(PluginManager::prefix())+"/"+parameters["inputfile"];
+   command += "qiime dada2 denoise-single --i-demultiplexed-seqs "+std::string(PluginManager::prefix())+"/"+parameters["inputfile"];
    if (parameters.count("threads") != 0)
 	   command += " --p-n-threads "+parameters["threads"];
-   if (parameters.count("forwardtruncate") != 0)
-	   command += " --p-trunc-len-f "+parameters["forwardtruncate"];
-   if (parameters.count("reversetruncate") != 0)
-	   command += " --p-trunc-len-r "+parameters["reversetruncate"];
-   if (parameters.count("forwardtrim") != 0)
-	   command += " --p-trim-left-f "+parameters["forwardtrim"];
-   if (parameters.count("reversetrim") != 0)
-	   command += " --p-trim-left-r "+parameters["reversetrim"];
+   if (parameters.count("truncatelength") != 0)
+	   command += " --p-trunc-len "+parameters["truncatelength"];
+   if (parameters.count("lefttrim") != 0)
+	   command += " --p-trim-left "+parameters["lefttrim"];
    if (parameters.count("q") != 0)
 	   command += " --p-trunc-q "+parameters["q"];
    if (parameters.count("chimeramethod") != 0)
 	   command += " --p-chimera-method "+parameters["chimeramethod"];
-   if (parameters.count("forwardmaxee") != 0)
-	   command += " --p-max-ee-f "+parameters["forwardmaxee"];
-   if (parameters.count("reversemaxee") != 0)
-	   command += " --p-max-ee-r "+parameters["reversemaxee"];
-   if (parameters.count("minoverlap") != 0)
-	   command += " --p-min-overlap "+parameters["minoverlap"];
+   if (parameters.count("maxee") != 0)
+	   command += " --p-max-ee "+parameters["maxee"];
 
    command += " --o-representative-sequences "+file+"-rep-seqs.qza --o-table "+file+"-table.qza --o-denoising-stats "+file+"-denoising-stats-dada.qza; ";
    command += "conda deactivate; ";
